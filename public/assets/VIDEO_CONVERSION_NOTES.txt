@@ -1,0 +1,9 @@
+﻿To add your MOV videos as MP4s:
+
+1. Install FFmpeg: https://ffmpeg.org/download.html
+2. Convert using:
+   ffmpeg -i  Animated Video.mov -c:v libx264 -preset medium -crf 23 Animated Video.mp4
+   ffmpeg -i Billboard final.mov -c:v libx264 -preset medium -crf 23 Billboard final.mp4
+3. Place the MP4 files in this directory (public/assets/)
+
+Alternatively, use an online converter like CloudConvert or VideoSmaller
