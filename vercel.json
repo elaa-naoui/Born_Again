@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "buildCommand": "cd backend && npm install",
+  "env": {
+    "NODE_ENV": {
+      "value": "production"
+    }
+  },
+  "functions": {
+    "backend/server.js": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/server.js"
+    }
+  ]
+}
