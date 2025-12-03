@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import FlameIcon from '@/components/FlameIcon';
+import { Canvas } from '@react-three/fiber';
+import { useGLTF } from '@react-three/drei';
 
 interface Message {
   id: number;

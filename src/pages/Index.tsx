@@ -6,6 +6,7 @@ import GallerySection from '@/components/GallerySection';
 import ContactSection from '@/components/ContactSection';
 import Chatbot from '@/components/Chatbot';
 import FloatingFlame from '@/components/FloatingFlame';
+import ErrorBoundary from '@/components/ErrorBoundary';
 // Flame3D removed — replaced by chatbot header icon
 
 export default function Index() {
@@ -18,14 +19,18 @@ export default function Index() {
   return (
     <div className="min-h-screen relative">
       {/* Floating flame button (opens chatbot + plays audio) */}
-      <FloatingFlame onClick={toggleChatbot} />
+      <ErrorBoundary>
+        <FloatingFlame onClick={toggleChatbot} />
+      </ErrorBoundary>
 
       {/* Chatbot */}
       <Chatbot isOpen={isChatbotOpen} onClose={() => setIsChatbotOpen(false)} />
 
       {/* Main content with higher z-index */}
       <div className="relative" style={{ zIndex: 20, position: 'relative' }}>
-        <Hero3D />
+        <ErrorBoundary>
+          <Hero3D />
+        </ErrorBoundary>
         <MissionSection />
         <ActivitiesSection />
         <GallerySection />

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
 function FlameModel3D() {
   const { scene } = useGLTF('/assets/flame.glb');
   const [sceneClone] = React.useState(() => scene.clone(true));
+  const groupRef = React.useRef<THREE.Group>(null);
 
   React.useEffect(() => {
     // Configure cloned scene meshes
@@ -23,8 +24,16 @@ function FlameModel3D() {
     });
   }, [sceneClone]);
 
+  // Animation loop for 3D rotation
+  useFrame((state) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y = state.clock.elapsedTime * 0.5; // Slow rotation
+      groupRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.1; // Subtle up-down tilt
+    }
+  });
+
   return (
-    <group rotation={[0, 0, 0]} scale={0.6}>
+    <group ref={groupRef} rotation={[0, 0, 0]} scale={1.2}>
       <primitive object={sceneClone} />
     </group>
   );
