@@ -154,7 +154,11 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
             className={`w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center ring-2 ring-transparent ${isPlaying ? 'ring-orange-400' : ''}`}
             title={isPlaying ? 'Pause audio' : 'Play audio'}
           >
-            <FlameIcon size={32} />
+            <Canvas style={{ width: '32px', height: '32px' }}>
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[0, 0, 5]} />
+              <FlameModel />
+            </Canvas>
           </button>
           <div>
             <h3 className="text-white font-bold text-lg">BornAgain Chatbot</h3>

@@ -5,7 +5,9 @@ export default function GallerySection() {
   const { ref, isVisible } = useScrollAnimation();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const images = [
+  const media = [
+    { type: 'video', src: '/assets/Animated Video.mov', title: 'Animated Video' },
+    { type: 'video', src: '/assets/Bilboard final.mov', title: 'Billboard Video' },
     { title: 'Community Support' },
     { title: 'Rehabilitation Program' },
     { title: 'Education Initiative' },
@@ -35,7 +37,7 @@ export default function GallerySection() {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
-          {images.map((image, index) => (
+          {media.map((item, index) => (
             <div
               key={index}
               className={`group relative overflow-hidden rounded-xl transition-all duration-500 transform ${
@@ -45,11 +47,20 @@ export default function GallerySection() {
                 transitionDelay: isVisible ? `${index * 50}ms` : '0ms',
               }}
             >
-              <div className="aspect-square overflow-hidden bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center cursor-default">
-                <div className="text-center p-4">
-                  <p className="text-white font-semibold text-lg">{image.title}</p>
+              {item.type === 'video' ? (
+                <video
+                  src={item.src}
+                  controls
+                  className="w-full h-full object-cover"
+                  title={item.title}
+                />
+              ) : (
+                <div className="aspect-square overflow-hidden bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center cursor-default">
+                  <div className="text-center p-4">
+                    <p className="text-white font-semibold text-lg">{item.title}</p>
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* 3D border effect */}
               <div className="absolute inset-0 border-2 border-transparent group-hover:border-orange-300 rounded-xl transition-all duration-500" />
