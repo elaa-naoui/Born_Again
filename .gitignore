@@ -10,7 +10,6 @@ dist-ssr
 .vite
 
 # Dependencies
-pnpm-lock.yaml
 yarn.lock
 package-lock.json
 
