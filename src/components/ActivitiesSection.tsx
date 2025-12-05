@@ -29,6 +29,10 @@ export default function ActivitiesSection() {
       title: 'Awareness and Anti-Stigma Campaigns',
       description: 'Promoting public understanding and acceptance through media, workshops, and community events.',
       color: 'from-orange-600 to-red-600',
+      videos: [
+        { src: '/assets/Animated Video.mov', title: 'Animated Awareness Video' },
+        { src: '/assets/Bilboard final.mov', title: 'Billboard Campaign Video' },
+      ],
     },
     {
       icon: Handshake,
@@ -76,9 +80,22 @@ export default function ActivitiesSection() {
                   {activity.title}
                 </h3>
 
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed mb-4">
                   {activity.description}
                 </p>
+
+                {activity.videos && (
+                  <div className="space-y-2">
+                      <video
+                        key={videoIndex}
+                        src={video.src}
+                        controls
+                        className="w-full rounded-lg"
+                        title={video.title}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             </HolographicCard>
           ))}

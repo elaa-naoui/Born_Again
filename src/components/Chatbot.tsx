@@ -151,10 +151,10 @@ export default function Chatbot({ isOpen, onClose }: ChatbotProps) {
             aria-label="Play chatbot audio"
             onClick={toggleAudio}
             type="button"
-            className={`w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center ring-2 ring-transparent ${isPlaying ? 'ring-orange-400' : ''}`}
+            className={`w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center ring-2 ring-transparent ${isPlaying ? 'ring-orange-400' : ''}`}
             title={isPlaying ? 'Pause audio' : 'Play audio'}
           >
-            <Canvas style={{ width: '32px', height: '32px' }}>
+            <Canvas style={{ width: '48px', height: '48px' }}>
               <ambientLight intensity={0.5} />
               <directionalLight position={[0, 0, 5]} />
               <FlameModel />

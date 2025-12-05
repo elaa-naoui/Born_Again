@@ -6,8 +6,6 @@ export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const media = [
-    { type: 'video', src: '/assets/Animated Video.mov', title: 'Animated Video' },
-    { type: 'video', src: '/assets/Bilboard final.mov', title: 'Billboard Video' },
     { title: 'Community Support' },
     { title: 'Rehabilitation Program' },
     { title: 'Education Initiative' },
